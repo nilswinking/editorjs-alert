@@ -54,6 +54,16 @@ $alert-themes:
   outline: none;
 }
 
+.cdx-alert__title {
+  font-weight: bold;
+}
+
+.cdx-alert__title[contentEditable='true'][data-placeholder] {
+  &::before {
+    font-weight: bold !important;
+  }
+}
+
 .cdx-alert [contentEditable='true'][data-placeholder] {
   &::before {
     position: absolute;

@@ -30,12 +30,14 @@ import AlignRightIcon from '../assets/align-right-icon.svg';
  * @property {string} type - Alert type
  * @property {string} alignType - Alert align type
  * @property {string} message - Alert message
+ * @property {string} title - Alert title
  *
  * @typedef {object} AlertConfig
  * @description Alert Tool`s initial configuration
  * @property {string} defaultType - default Alert type
  * @property {string} defaultAlignType - default align Alert type
  * @property {string} messagePlaceholder - placeholder to show in Alert`s message input
+ * @property {string} titlePlaceholder - placeholder to show in Alert`s title input
  */
 export default class Alert {
   /**
@@ -89,7 +91,17 @@ export default class Alert {
   static get DEFAULT_MESSAGE_PLACEHOLDER() {
     return 'Type here...';
   }
-
+  
+  /**
+   * Default placeholder for Alert title
+   *
+   * @public
+   * @returns {string}
+   */
+  static get DEFAULT_TITLE_PLACEHOLDER() {
+    return 'Title...';
+  }
+  
   /**
    * Supported Alert types
    *
@@ -130,6 +142,7 @@ export default class Alert {
       wrapperForType: (type) => `cdx-alert-${type}`,
       wrapperForAlignType: (alignType) => `cdx-alert-align-${alignType}`,
       message: 'cdx-alert__message',
+      title: 'cdx-alert__title',
     };
   }
 
@@ -148,6 +161,7 @@ export default class Alert {
     this.defaultAlign = config.defaultAlign || Alert.DEFAULT_ALIGN_TYPE;
     this.messagePlaceholder =
       config.messagePlaceholder || Alert.DEFAULT_MESSAGE_PLACEHOLDER;
+    this.titlePlaceholder = config.titlePlaceholder || Alert.DEFAULT_TITLE_PLACEHOLDER;
 
     this.data = {
       type: Alert.ALERT_TYPES.includes(data.type)
@@ -157,6 +171,7 @@ export default class Alert {
         ? data.align
         : this.defaultAlign,
       message: data.message || '',
+      title: data.title || '',
     };
 
     this.container = undefined;
@@ -193,7 +208,15 @@ export default class Alert {
     });
 
     messageEl.dataset.placeholder = this.messagePlaceholder;
+    
+    const titleEl = this._make('div', [this.CSS.title], {
+      contentEditable: !this.readOnly,
+      innerHTML: this.data.title,
+    });
+    
+    titleEl.dataset.placeholder = this.titlePlaceholder;
 
+    this.container.appendChild(titleEl);
     this.container.appendChild(messageEl);
 
     return this.container;
@@ -300,8 +323,9 @@ export default class Alert {
    */
   save(alertElement) {
     const messageEl = alertElement.querySelector(`.${this.CSS.message}`);
+    const titleEl = alertElement.querySelector(`.${this.CSS.title}`);
 
-    return { ...this.data, message: messageEl.innerHTML };
+    return { ...this.data, message: messageEl.innerHTML, title: titleEl.innerHTML };
   }
 
   /**
@@ -354,6 +378,7 @@ export default class Alert {
       import: (string) => {
         return {
           message: string,
+          title: string,
           type: this.DEFAULT_TYPE,
           alignType: this.DEFAULT_ALIGN_TYPE,
         };
@@ -368,6 +393,7 @@ export default class Alert {
   static get sanitize() {
     return {
       message: true,
+      title: true,
       type: false,
       alignType: false,
     };
