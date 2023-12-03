@@ -1,6 +1,6 @@
 # Editor.js Alert Tool
 
-[![npm](https://img.shields.io/npm/v/editorjs-alerts.svg?style=?style=flat&logo=appveyor)](https://www.npmjs.com/package/editorjs-alert) ![Version of EditorJS that the plugin is compatible with](https://badgen.net/badge/Editor.js/v2.0/blue)
+[![npm](https://img.shields.io/npm/v/editorjs-alerts.svg?style=?style=flat&logo=appveyor)](https://www.npmjs.com/package/editorjs-alerts) ![Version of EditorJS that the plugin is compatible with](https://badgen.net/badge/Editor.js/v2.0/blue)
 
 Provides Alert blocks for the [Editor.js](https://editorjs.io/).
 
