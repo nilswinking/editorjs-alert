@@ -1,6 +1,6 @@
 # Editor.js Alert Tool
 
-[![npm](https://img.shields.io/npm/v/editorjs-alert.svg?style=?style=flat&logo=appveyor)](https://www.npmjs.com/package/editorjs-alert) ![Version of EditorJS that the plugin is compatible with](https://badgen.net/badge/Editor.js/v2.0/blue)
+[![npm](https://img.shields.io/npm/v/editorjs-alerts.svg?style=?style=flat&logo=appveyor)](https://www.npmjs.com/package/editorjs-alert) ![Version of EditorJS that the plugin is compatible with](https://badgen.net/badge/Editor.js/v2.0/blue)
 
 Provides Alert blocks for the [Editor.js](https://editorjs.io/).
 
@@ -26,17 +26,17 @@ Watch this tool in action in the following short GIF movie.
 Get the package
 
 ```sh
-npm i --save editorjs-alert
+npm i --save editorjs-alerts
 ```
 
 Include module at your application
 
 ```js
-const Header = require('editorjs-alert');
+const Header = require('editorjs-alerts');
 
 // OR
 
-import Alert from 'editorjs-alert';
+import Alert from 'editorjs-alerts';
 ```
 
 ### Download to your project's source dir
@@ -45,10 +45,10 @@ Copy [`dist/bundle.js`](./dist/bundle.js) file to your page.
 
 ### Load from CDN
 
-You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/editorjs-alert).
+You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/editorjs-alerts).
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/editorjs-alert@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/editorjs-alerts@latest"></script>
 ```
 
 ## Usage
